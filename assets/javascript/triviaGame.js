@@ -1,42 +1,68 @@
+var score = 0;
+var currentQuestion = 0;
+var questions = [
+    {
+        title: "What color is the sky?",
+        answers: ['yellow', 'blue', 'orange', 'green'],
+        correct: 1
+    },
+    {
+        title: "What color is grass?",
+        answers: ['yellow', 'blue', 'orange', 'green'],
+        correct: 3
+    },
+    {
+        title: "What color is the sun?",
+        answers: ['yellow', 'blue', 'orange', 'green'],
+        correct: 0
+    },
+    {
+        title: "What color is cheetos?",
+        answers: ['yellow', 'blue', 'orange', 'green'],
+        correct: 2
+    },
+]
+
 $(document).ready(function () {
-    var counter = 60;
-    var intevalId;
-    var correct = 0;
-
-    $("#stop").on("click", stop);
-    $("#resume").on("click", run);
-
-    function run() {
-        clearInterval(intervalId);
-        intervalId = setInterval(decrement, 1000);
-    }
-
-    function decrement() {
-        counter--;
-        $("#show-counter").html("<h1>" + counter + "</h1>");
-        if (counter === 0) {
-            stop();
-            alert("Time's Up!");
+    $('.start a').click(function (e) {
+        e.preventDefault();
+        $('.start').hide();
+        $('.quiz').show();
+        showQuestion();
+    });
+    $('.quiz ul').on('click', 'li', function () {
+        $('.selected').removeClass('selected');
+        $(this).addClass('selected');
+    });
+    $('.quiz a').click(function (e) {
+        e.preventDefault();
+        if ($('li.selected').length) {
+            var guess = $('li.selected').attr('id');
+            console.log(guess);
+        } else {
+            alert('Please selected an answer');
         }
-    }
+    })
+
 });
 
-var questions = [
-    [1, "What is the capital of Pennsylvania", "harrisburg"],
-    [2, "Where is Canada located?", "above the united states"],
-    [3, "Is pikachu a rat or a mouse?", "a mouse"]
-];
+function startQuiz() {
 
-var answer;
-var reponse;
-
-for (var i = 0; i < questions.length; i += 1) {
-    answer = prompt(questions[i]);
-    response = answer.toLowerCase();
 }
 
-if (response === questions[i][2]); {
-    document.write("correct!");
-} else {
-    document.write("wrong)");
+function showQuestion() {
+    var question = questions[currentQuestion];
+    $('.quiz h2').text(question.title);
+    $('.quiz ul').html('');
+    for (var i = 0; i < question.answers.length; i++) {
+        $('.quiz ul').append("<li id = '"+i+"'>" + question.answers[i] + "</li>");
+    }
+};
+
+function checkAnswer() {
+
+}
+
+function showSummary() {
+
 }
