@@ -1,94 +1,48 @@
-$(document).ready(function () {
-    var questions = [
-        new Question("Which one is not an object oriented programming language?", ["Java", "C#", "C++", "C"], "C"),
-        new Question("Which language is used for styling web pages?", ["HTML", "JQuery", "CSS", "XML"], "CSS"),
-        new Question("There are ___ main components of object oriented programming.", ["1", "6", "2", "4"], "4"),
-        new Question("Which language is used for web apps?", ["PHP", "Python", "Javascript", "All"], "All")
-    ];
+(function () {
+    function buildQuiz() {
+        // we'll need a place to store the HTML output
+        const output = [];
 
-    var i;
-    for (i = 0; i < questions.length; i++) {
-    }
-    console.log(questions);
+        // for each question...
+        myQuestions.forEach((currentQuestion, questionNumber) => {
+            // we'll want to store the list of answer choices
+            const answers = [];
 
-    function Question(text, choices, answer) {
-        this.text = text;
-        this.choices = choices;
-        this.answer = answer;
-    }
-    console.log(Question);
-
-    Question.prototype.correctAnswer = function (choice) {
-        return choice === this.answer;
-
-    }
-
-    function Quiz(questions) {
-        this.score = 0;
-        this.questions = questions;
-        this.questionIndex = 0;
-    }
-
-    Quiz.prototype.getQuestionIndex = function () {
-        return this.questions[this.questionIndex];
-    }
-
-    Quiz.prototype.isEnded = function () {
-        return this.questions.length === this.questionIndex;
-    }
-
-    Quiz.prototype.guess = function (answer) {
-        this.questionIndex++;
-
-        if (this.getQuestionIndex().correctAnswer(answer)) {
-            this.score++;
-        }
-        this.question++;
-    }
-
-    function populate() {
-        if (quiz.isEnded()) {
-            showScore();
-        }
-        else {
-            //show question
-            var element = document.getElementById("questions");
-            element.innerHTML = quiz.getQuestionIndex().text;
-
-            //show choices
-            var choices = quiz.getQuestionIndex().choices;
-            for (var i = 0; i < choices.length; i++) {
-                var element = document.getElementById("choice" + i);
-                element.innerHTML = choices[i];
-                guess("btn" + i, choices[i]);
+            // and for each available answer...
+            for (letter in currentQuestion.answers) {
+                // ...add an HTML radio button
+                answers.push(
+                    `<label>
+              <input type="radio" name="question${questionNumber}" value="${letter}">
+              ${letter} :
+              ${currentQuestion.answers[letter]}
+            </label>`
+                );
             }
-            showProgress();
-        }
-    };
 
-    function guess(id, guess) {
-        var button = document.getElementById(id);
-        $("#button").onclick = function () {
-            $("#quiz").guess(guess);
-            populate();
-        }
+            // add this question and its answers to the output
+            output.push(
+                `<div class = "question" > ${currentQuestion.question} </div>
+          <div class = "answers" > ${
+                answers.join("")
+                } </div>`
+            );
+        });
+
+        // finally combine our output list into one string of HTML and put it on the page
+        quizContainer.innerHTML = output.join("");
     }
 
-    function showProgress() {
-        var currentQuestionNumber = quiz.questionIndex + 1;
-        var element = document.getElementById("progress");
-        element.innerHTML = "Question" + currentQuestionNumber + "of" + quiz.questions.length;
-    }
+    function showResults() {
+        // gather answer containers from our quiz
+        const answerContainers = quizContainer.querySelectorAll(".answers");
 
-    function showScore() {
-        var gameOverHTML = "<h1>Result</h1>";
-        gameOverHTML += "<h2 id='score'> Your scores: " + quiz.score + "<h2>";
-        var element = document.getElementById("quiz");
-        element.innerHTML = gameOverHTML;
-    }
+        // keep track of user's answers
+        let numCorrect = 0;
 
-    var quiz = new Quiz(questions);
-
-    populate();
-});
-
+        // for each question...
+        myQuestions.forEach((currentQuestion, questionNumber) => {
+            // find selected answer
+            const answerContainer = answerContainers[questionNumber];
+            const selector = `input[name=question${questionNumber}]:checked`;
+            const userAnswer = (answerContainer.querySelector(selector) || {}).value;
