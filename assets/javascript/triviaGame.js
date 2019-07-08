@@ -4,37 +4,6 @@ var submitButton = $("#submit");
 var numCorrect = 0;
 var output = [];
 
-
-var myQuestions = [{
-    question: "What bear is best?",
-    answers: {
-        a: "Polar Bear",
-        b: "Black Bear",
-        c: "Care Bear"
-    },
-    correctAnswer: "b"
-},
-{
-    question: "What is the best site ever created?",
-    answers: {
-        a: "SitePoint",
-        b: "Simple Steps Code",
-        c: "Trick question; they're both the best"
-    },
-    correctAnswer: "c"
-},
-{
-    question: "Where is Waldo really?",
-    answers: {
-        a: "Antarctica",
-        b: "Exploring the Pacific Ocean",
-        c: "Sitting in a tree",
-        d: "Minding his own business, so stop asking"
-    },
-    correctAnswer: "d"
-}
-];
-
 (function () {
     function buildQuiz() {
         myQuestions.forEach((currentQuestion, questionNumber) => {
