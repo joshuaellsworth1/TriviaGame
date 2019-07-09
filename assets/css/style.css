@@ -37,3 +37,7 @@ img {
   height: 80%;
   z-index: -5;
 }
+
+#show-number {
+  color: gold;
+}
