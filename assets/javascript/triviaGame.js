@@ -47,40 +47,39 @@ var output = [];
                 answerContainers[questionNumber].style.color = "red";
             }
         });
-
         resultsContainer.innerHTML = `${numCorrect} out of ${myQuestions.length}`;
     }
 
     var quizContainer = document.getElementById("quiz");
     var resultsContainer = document.getElementById("results");
     var submitButton = document.getElementById("submit");
+
     var myQuestions = [{
-        question: "What bear is best?",
+        question: "Who is Woody's best friend?",
         answers: {
-            a: "Polar Bear",
-            b: "Black Bear",
-            c: "Care Bear"
+            a: "Buzz Lightyear",
+            b: "Toymaker",
+            c: "Santa Clause"
         },
-        correctAnswer: "b"
+        correctAnswer: "a"
     },
     {
-        question: "What is the best site ever created?",
+        question: "Who is Buzz Lightyear's arch nemesis?",
         answers: {
-            a: "SitePoint",
-            b: "Simple Steps Code",
-            c: "Trick question; they're both the best"
+            a: "Zurg",
+            b: "Zadar",
+            c: "Zorp"
         },
-        correctAnswer: "c"
+        correctAnswer: "a"
     },
     {
-        question: "Where is Waldo really?",
+        question: "What is the name of Jessie's previous owner?",
         answers: {
-            a: "Antarctica",
-            b: "Exploring the Pacific Ocean",
-            c: "Sitting in a tree",
-            d: "Minding his own business, so stop asking"
+            a: "Emily",
+            b: "Grace",
+            c: "Sabrina",
         },
-        correctAnswer: "d"
+        correctAnswer: "a"
     }
     ];
 
