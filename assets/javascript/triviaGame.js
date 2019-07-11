@@ -1,123 +1,36 @@
-var quizContainer = $("#quiz");
-var resultsContainer = $("#results");
-var submitButton = $("#submit");
-var numCorrect = 0;
-var output = [];
+var score = 0;
+var currentQuestion = 0;
 
-(function () {
-    function buildQuiz() {
-        myQuestions.forEach((currentQuestion, questionNumber) => {
-            var answers = [];
+var questions = [ {
+    q: "what is 2 + 2?"
+    a: ["1", "2", "3", "4"],
+    correct: 3
+}, 
+{
+    q: "what is 2 + 1?"
+    a: ["1", "2", "3", "4"],
+    correct: 2
+},
+{
+    q: "what is 2 + 2?"
+    a: ["1", "2", "3", "4"],
+    correct: 3
+},
+{
+    q: "what is 2 + 2?"
+    a: ["1", "2", "3", "4"],
+    correct: 3
+}
+]
 
-            for (letter in currentQuestion.answers) {
-                answers.push(
-                    `<label>
-              <input type="radio" name="question${questionNumber}" value="${letter}">
-              ${letter} :
-              ${currentQuestion.answers[letter]}
-            </label>`
-                );
-            }
+var question = $('questions');
+var answers = $('a');
+var correctAns = $('correct');
+var submit = $('submit');
+var answers = $('answers');
+var array = questions.length;
 
-            output.push(
-                `<div class = "question" > ${currentQuestion.question} </div>
-          <div class = "answers" > ${
-                answers.join("")
-                } </div>`
-            );
-        });
-
-        quizContainer.innerHTML = output.join("");
-    }
-
-    function showResults() {
-        var answerContainers = quizContainer.querySelectorAll(".answers");
-
-        myQuestions.forEach((currentQuestion, questionNumber) => {
-
-            var answerContainer = answerContainers[questionNumber];
-            var selector = `input[name=question${questionNumber}]:checked`;
-            var userAnswer = (answerContainer.querySelector(selector) || {}).value;
-
-            if (userAnswer === currentQuestion.correctAnswer) {
-                numCorrect++;
-
-                answerContainers[questionNumber].style.color = "lightgreen";
-            } else {
-                answerContainers[questionNumber].style.color = "red";
-            }
-        });
-        resultsContainer.innerHTML = `${numCorrect} out of ${myQuestions.length}`;
-    }
-
-    var quizContainer = document.getElementById("quiz");
-    var resultsContainer = document.getElementById("results");
-    var submitButton = document.getElementById("submit");
-
-    var myQuestions = [{
-        question: "Who is Woody's best friend?",
-        answers: {
-            a: "Buzz Lightyear",
-            b: "Toymaker",
-            c: "Santa Clause"
-        },
-        correctAnswer: "a"
-    },
-    {
-        question: "Who is Buzz Lightyear's arch nemesis?",
-        answers: {
-            a: "Zurg",
-            b: "Zadar",
-            c: "Zorp"
-        },
-        correctAnswer: "a"
-    },
-    {
-        question: "What is the name of Jessie's previous owner?",
-        answers: {
-            a: "Emily",
-            b: "Grace",
-            c: "Sabrina",
-        },
-        correctAnswer: "a"
-    }
-    ];
-
-    buildQuiz();
-
-    submitButton.addEventListener("click", showResults);
-})();
-
-var number = 30;
-
-var intervalId;
-
-    $("#stop").on("click", stop);
-
-    $("#resume").on("click", run);
-
-    function run() {
-      clearInterval(intervalId);
-      intervalId = setInterval(decrement, 1000);
-    }
-
-    function decrement() {
-
-      number--;
-
-      $("#show-number").html("<h2>" + number + "</h2>");
-
-      if (number === 0) {
-
-        stop();
-
-        alert("Pencil's down! Time is up!");
-      }
-    }
-
-    function stop() {
-
-      clearInterval(intervalId);
-    }
-
-    run();
+function questionList (questionIndex) {
+    var q = questions[questionIndex];
+    
+}

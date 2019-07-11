@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Quiz</title>
+    <title>Trivia Game</title>
     <link rel="stylesheet" type="text/css" href="assets/css/style.css">
     <img src="http://sfwallpaper.com/images/toy-story-cloud-wallpaper-11.jpg" alt="AndysRoom">
 
@@ -14,11 +14,26 @@
 </head>
 
 <body>
-    <div id="show-number"></div>
-        <br>
-    <div id="quiz"></div>
-    <button id="submit">Submit</button>
-    <div id="results"></div>
+    <div class="container">
+        <div class="radio1">
+            <label>
+                <input type="radio" value="optionA" class="btn">Option A
+            </label>
+        </div>
+
+        <div class="radio2">
+                <label>
+                    <input type="radio" value="optionA" class="btn">Option B
+                </label>
+            </div>
+
+            <div class="radio3">
+                    <label>
+                        <input type="radio" value="optionA" class="btn">Option C
+                    </label>
+                </div>
+                <button type="button" class="btn btn-primary">Submit</button>
+    </div>
     <script src="assets/javascript/triviaGame.js">
     </script>
 </body>
