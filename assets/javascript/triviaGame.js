@@ -56,22 +56,46 @@ $(".btn").on("click", function() {
     }
     alert("correct guesses" + correctCounter);
     alert("incorrect guesses" + incorrectCounter);
+    $("#results").append("<div>")
+    results.text();
+
 })
-
-
-// if (q1 == "4") {
-//     correct++;
-// }
-// if (q2 == "3") {
-//     correct++;
-// }
-// if (q3 == "4") {
-//     correct++;
-// }
-// if (q4 == "4") {
-//     correct++;
-// }
 });
+
+// I didn't have enough time to figure out how the clock function works. This is the interval example from class.
+// var number = 20;
+
+//     var intervalId;
+
+//     function run() {
+//       clearInterval(intervalId);
+//       intervalId = setInterval(decrement, 1000);
+//     }
+
+//     function decrement() {
+
+//       number--;
+
+//       $("#number").html("<h2>" + number + "</h2>");
+
+//       if (number === 0) {
+
+//         stop();
+
+//         alert("Time Up!");
+//       }
+//     }
+
+//     function stop() {
+
+//       clearInterval(intervalId);
+//     }
+
+//     run();
+
+
+
+//Notes
 
 //1. to compare userInputs, create a variable to hold the userInputValue that is checked
 //2. loop through the input variable
