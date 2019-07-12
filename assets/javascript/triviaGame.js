@@ -3,9 +3,9 @@ var correctCounter = 0;
 var incorrectCounter = 0;
 
 var questions = [{
-    question: "what is 2 + 2?",
-    a: ["1", "2", "3", "4"],
-    correct: "4"
+    question: "Who made Toy Story?",
+    a: ["Pixar", "Marvel", "DC", "Bad Robot"],
+    correct: "Pixar"
 },
 {
     question: "Who is wooody's best friend?",
@@ -13,14 +13,14 @@ var questions = [{
     correct: "buzz"
 },
 {
-    question: "what is 2 + 0?",
-    a: ["1", "2", "3", "4"],
-    correct: "2"
+    question: "Who is Buzz Lightyear's arch nemesis?",
+    a: ["zurg", "thrash", "darth vader", "ganondorf"],
+    correct: "zurg"
 },
 {
-    question: "what is 2 + 5?",
-    a: ["1", "2", "3", "7"],
-    correct: "7"
+    question: "What color is Jessie's hat?",
+    a: ["blue", "red", "green", "yellow"],
+    correct: "red"
 }
 ]
 
